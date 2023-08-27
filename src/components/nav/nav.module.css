@@ -1,0 +1,99 @@
+.nav {
+    width: 57px;
+    height: calc(100vh - 34px);
+    min-height: 768px;
+    flex-shrink: 0;
+    border-radius: 0px 20px 20px 0px;
+    background: #4FA1C1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .decorative-square {
+    width: 57px;
+    height: 41px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    z-index: 800;
+    user-select: none;
+
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    position: relative;
+}
+
+.nav-button {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-bottom: 24px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #FFF;
+    background-size: contain;
+}
+.button-1 {
+    background-image: url('/assets/bt1.png');
+    /* Substitua pelo caminho correto da imagem */
+    background-size: 19px 22px;
+    /* Define o tamanho da imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.button-2 {
+    background-image: url('/assets/bt2.jpg');
+    /* Substitua pelo caminho correto da imagem */
+    background-size: 32px 32px;
+    /* Define o tamanho da imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.button-3 {
+    background-image: url('/assets/bt3.jpg');
+    /* Substitua pelo caminho correto da imagem */
+    background-size: 32px 32px;
+    /* Define o tamanho da imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.button-4 {
+    background-image: url('/assets/bt4.png');
+    /* Substitua pelo caminho correto da imagem */
+    background-size: 19px 22px;
+    /* Define o tamanho da imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.button-5 {
+    background-image: url('/assets/bt5.jpg');
+    /* Substitua pelo caminho correto da imagem */
+    background-size: 32px 32px;
+    /* Define o tamanho da imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.button-6 {
+    background-image: url('/assets/bt6.png');
+    /* Substitua pelo caminho correto da imagem */
+    background-size: 19px 22px;
+    /* Define o tamanho da imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+}

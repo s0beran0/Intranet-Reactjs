@@ -1,0 +1,93 @@
+.nav2{
+  width: 1242px;
+  height: 159px;
+  flex-shrink: 0;
+  background: #FFF;
+  box-shadow: 0px 2px 23px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  position: absolute;
+  top: 25px;
+  left: max(calc(50% - 621px), 90px);
+  z-index: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -3;
+}
+  
+.second-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+.segmented-line {
+  height: 5px;
+  background: repeating-linear-gradient(90deg, transparent, transparent 10px, #4FA1C1 10px, #4FA1C1 20px);
+  position: absolute;
+  top: calc(50% - 2.5px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-650%);
+  z-index: -1;
+  width: calc(100% - 70px);
+}
+.second-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  right: 25px;
+  bottom: 0;
+}
+.second-navbar-button {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #4FA1C1;
+  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.25);
+  outline: none;
+  border: none;
+  margin-right: 70px;
+  background-image: url('/assets/supbt.png');
+  background-size: 32px 37.647px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.second-navbar-button:hover {
+  animation: floating 2s ease infinite;
+}
+.button-text {
+  width: 87px;
+  height: 23px;
+  flex-shrink: 0;
+  color: #4FA1C1;
+  text-align: center;
+  font-family: Ubuntu;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  pointer-events: none;
+  user-select: none;
+}
+@keyframes floating {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-5px);
+  }
+}

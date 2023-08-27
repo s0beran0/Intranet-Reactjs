@@ -1,0 +1,36 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "nome": "João Silva",
+      "cpf": "123.456.789-00",
+      "rg": "1234567",
+      "sexo": "M",
+      "dataNasc": "1990-01-01",
+      "cargo": "gerente",
+      "ativo": true
+    },
+    {
+      "id": 2,
+      "nome": "Maria Souza",
+      "cpf": "987.654.321-00",
+      "rg": "7654321",
+      "sexo": "F",
+      "dataNasc": "1985-05-10",
+      "cargo": "analista",
+      "ativo": false
+    },
+    {
+      "nome": "Eduardo Borges Benck",
+      "cpf": "04365336185",
+      "rg": "000000000",
+      "sexo": "M",
+      "dataNasc": "2003-01-16",
+      "cargo": "assistente",
+      "ativo": true,
+      "noEpi": true,
+      "arquivo": null,
+      "id": 3
+    }
+  ]
+}
