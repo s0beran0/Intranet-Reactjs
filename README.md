@@ -1,4 +1,9 @@
-
+Para preparar o arquivo:
+```bash
+npm install nextjs
+#ou
+yarn add nextjs
+```
 Para inicializar o servidor:
 
 ```bash
@@ -13,7 +18,9 @@ Abra [http://localhost:3000](http://localhost:3000).
 
 Para incializar o json-server:
 
-json-server": "json-server --watch db.json --port 5000
+json-server --watch db.json --port 5000
+
+Todas as requisisões se encontram no arquivo actions.js como solicitado.
 
   dependencies: 
     "@next/font": "13.4.19",
