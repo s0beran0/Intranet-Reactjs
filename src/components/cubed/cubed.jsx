@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Switch,List, Card } from 'antd';
+import { Button, Switch,List, Card, Dropdown, Modal, Menu} from 'antd';
 import styles from './cubed.module.css';
 import { useSelector, useDispatch  } from 'react-redux';
 import { MoreOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
@@ -9,7 +9,7 @@ import axios from 'axios';
 
 
 
-
+const { confirm } = Modal;
 
 export default function Cubed() {
 
@@ -28,8 +28,33 @@ export default function Cubed() {
         });
     }, []);
 
+    const handleDelete = (id) => {
+      confirm({
+        title: 'Tem certeza que deseja excluir este usuário?',
+        icon: <ExclamationCircleOutlined />,
+        okText: 'Sim',
+        okType: 'danger',
+        cancelText: 'Cancelar',
+        onOk() {
+          // Fazendo a requisição DELETE para o JSON-Server
+          axios.delete(`http://localhost:5000/employees/${id}`) // Substitua pela rota correta
+            .then(() => {
+              setData(prevData => prevData.filter(item => item.id !== id));
+            })
+            .catch(error => {
+              console.error('Erro ao excluir o usuário:', error);
+            });
+        },
+      });
+    };
 
-
+    const menu = (id) => (
+      <Menu>
+        <Menu.Item key="delete" onClick={() => handleDelete(id)}>
+          Excluir
+        </Menu.Item>
+      </Menu>
+    );
 
 
     const dispatchApp = useDispatch(); // Usando um nome diferente para evitar conflito
@@ -113,7 +138,11 @@ export default function Cubed() {
             }}
           >
             <Card className={styles.nextlevel}>
-             <div className={styles['underlevel']}></div>
+             <div className={styles['underlevel']}>
+             <Dropdown overlay={menu(item.id)} trigger={['click']}>
+                <Button icon={<MoreOutlined />} />
+              </Dropdown>
+             </div>
               <p className={styles.nome}>{item.nome}</p>
               <p className={styles.cpf}>{item.cpf}</p>
               <p className={styles.ativo}>Ativ {item.ativo ? 'Sim' : 'Não'}</p>
