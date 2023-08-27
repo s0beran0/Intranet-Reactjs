@@ -16,6 +16,7 @@ import {
 import styles from './inside.module.css';
 import { useSelector, useDispatch  } from 'react-redux';
 import { setInsideVisible } from '../moduleVisibilitySlice';
+import { createEmployee } from '../../../actions.js';
 import axios from 'axios';
 
 const { Item } = Form;
@@ -24,16 +25,11 @@ const { Option } = Select;
 export default function Inside() {
 
 
-
-
-
-
-
   const [mainForm] = Form.useForm();
   const [activityForm] = Form.useForm();
   const [ativo, setAtivo] = useState(true);
   const [isLocked, setIsLocked] = useState(false);
-  const [noEpi, setNoEpi] = useState(false); // Estado do Checkbox
+  const [noEpi, setNoEpi] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFormSubmit = async () => {
@@ -51,11 +47,9 @@ export default function Inside() {
 
       console.log('Valores combinados:', combinedFormData);
 
-      // Envie os dados combinados para o servidor JSON usando o Axios
-      const response = await axios.post('http://localhost:5000/employees', combinedFormData);
-      console.log('Resposta do servidor:', response.data);
+      const response = await createEmployee(combinedFormData);
+      console.log('Resposta do servidor:', response);
 
-      // Limpe os campos dos formulários após o envio bem-sucedido
       mainForm.resetFields();
       activityForm.resetFields();
       dispatch(setInsideVisible(false));
@@ -67,18 +61,13 @@ export default function Inside() {
   const handleLockChange = (e) => {
     setIsLocked(e.target.checked);
     if (!e.target.checked) {
-      setNoEpi(false); // Reinicialize o estado do Checkbox ao desbloquear
+      setNoEpi(false);
     }
   };
+
   const handleSwitchChange = (checked) => {
     setAtivo(checked);
   };
-
-
-
-
-
-
 
 
   const dispatch = useDispatch();
@@ -228,7 +217,7 @@ export default function Inside() {
       </div>
       <div className={styles.separador3}>
         <div className={styles['text-separador3']}>
-          <p>EPIs do trabalhador?</p>
+          <p>Quais EPIs o trabalhador usa na atividade?</p>
         </div>
         <div className={styles['scroll-bar']}>
           <div style={{ maxHeight: '100%', overflowY: 'auto' }}>
@@ -302,7 +291,7 @@ export default function Inside() {
                 onClick={() => toggleEpiInput(index)}
                 disabled={isLocked}
               >
-                Mudar EPI
+                Adicionar EPI
               </Button>
             </Form.Item>
           </Col>
@@ -323,7 +312,7 @@ export default function Inside() {
       </div>
       <div className={styles.separador4}>
         <div className={styles['text-separador4']}>
-          <p>Atestado de Saúde Ocupacional:</p>
+          <p>Adicione Atestado de Saúde Ocupacional (opcional):</p>
         </div>
         <div className={styles['archive-folder']}>
           <div className={styles['archive-texto']}>

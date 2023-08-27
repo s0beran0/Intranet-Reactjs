@@ -1,12 +1,14 @@
-// pages/_app.js
-import { Provider } from 'react-redux'; // Certifique-se de que esta importação está correta
-import store from '../redux/store'; // Importe o store que você criou
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react'; // Importar PersistGate
+import { store, persistor } from '../redux/store';
 import 'typeface-roboto';
 
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <PersistGate loading={null} persistor={persistor}>
+        <Component {...pageProps} />
+      </PersistGate>
     </Provider>
   );
 }

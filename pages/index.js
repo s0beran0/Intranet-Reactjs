@@ -16,12 +16,10 @@ export default function Home() {
   const insideVisible = useSelector(state => state.moduleVisibility.insideVisible);
 
   const handleShowCubed = () => {
-    // Altera a visibilidade para true quando o botão é clicado
     dispatch(setInsideVisible(true));
   };
 
   const handleHideCubed = () => {
-    // Altera a visibilidade para false quando o botão é clicado
     dispatch(setInsideVisible(false));
   };
 

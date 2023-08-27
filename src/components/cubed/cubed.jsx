@@ -2,62 +2,66 @@ import React, { useState, useEffect } from 'react';
 import { Button, Switch,List, Card, Dropdown, Modal, Menu} from 'antd';
 import styles from './cubed.module.css';
 import { useSelector, useDispatch  } from 'react-redux';
-import { MoreOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { EllipsisOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { setInsideVisible } from '../moduleVisibilitySlice';
 import { setSwitchValue, setButtonText } from '../appReducer';
-import axios from 'axios';
-
+import { fetchEmployees, deleteEmployee } from '../../../actions.js';
 
 
 const { confirm } = Modal;
 
 export default function Cubed() {
 
+  const [data, setData] = useState([]);
+  const [originalData, setOriginalData] = useState([]);
 
-
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-      // Fazendo a requisição GET para o JSON-Server
-      axios.get('http://localhost:5000/employees') // Substitua pela rota correta
-        .then(response => {
-          setData(response.data);
-        })
-        .catch(error => {
-          console.error('Erro ao obter os dados do servidor:', error);
-        });
-    }, []);
-
-    const handleDelete = (id) => {
-      confirm({
-        title: 'Tem certeza que deseja excluir este usuário?',
-        icon: <ExclamationCircleOutlined />,
-        okText: 'Sim',
-        okType: 'danger',
-        cancelText: 'Cancelar',
-        onOk() {
-          // Fazendo a requisição DELETE para o JSON-Server
-          axios.delete(`http://localhost:5000/employees/${id}`) // Substitua pela rota correta
-            .then(() => {
-              setData(prevData => prevData.filter(item => item.id !== id));
-            })
-            .catch(error => {
-              console.error('Erro ao excluir o usuário:', error);
-            });
-        },
+  useEffect(() => {
+    fetchEmployees()
+      .then(responseData => {
+        setData(responseData);
+        setOriginalData(responseData);
+      })
+      .catch(error => {
       });
-    };
+  }, []);
 
-    const menu = (id) => (
-      <Menu>
-        <Menu.Item key="delete" onClick={() => handleDelete(id)}>
-          Excluir
-        </Menu.Item>
-      </Menu>
-    );
+  const handleDelete = (id) => {
+    confirm({
+      title: 'Tem certeza que deseja excluir este funcionário?',
+      icon: <ExclamationCircleOutlined />,
+      okText: 'Sim',
+      okType: 'danger',
+      cancelText: 'Cancelar',
+      onOk() {
+        deleteEmployee(id)
+          .then(() => {
+            setData(prevData => prevData.filter(item => item.id !== id));
+          })
+          .catch(error => {
+          });
+      },
+    });
+  };
+
+  const handleFilterActive = () => {
+    const filteredData = originalData.filter(item => item.ativo);
+    setData(filteredData);
+  };
+
+  const handleClearFilters = () => {
+    setData(originalData);
+  };
+
+  const menu = (id) => (
+    <Menu>
+      <Menu.Item key="delete" onClick={() => handleDelete(id)}>
+        Excluir
+      </Menu.Item>
+    </Menu>
+  );
 
 
-    const dispatchApp = useDispatch(); // Usando um nome diferente para evitar conflito
+    const dispatchApp = useDispatch();
   const { switchValue, setButtonText } = useSelector(state => state.app);
 
     const dispatch = useDispatch();
@@ -88,37 +92,39 @@ export default function Cubed() {
                     + Adicionar Funcionário
                 </Button>
                 <Button
-                    type="default"
-                    style={{
-                        position: 'absolute',
-                        top: '170px',
-                        width: '192px',
-                        left: '2.5%',
-                        borderRadius: '10px',
-                        border: '1px solid #4FA1C1',
-                        background: 'transparent',
-                        color: '#4FA1C1',
-                        marginRight: '30px',
-                    }}
-                >
-                    Ver apenas ativos
-                </Button>
-                <Button
-                    type="default"
-                    style={{
-                        position: 'absolute',
-                        top: '170px',
-                        width: '192px',
-                        left: '25%',
-                        borderRadius: '10px',
-                        border: '1px solid #4FA1C1',
-                        background: 'transparent',
-                        marginLeft: '30px',
-                        color: '#4FA1C1',
-                    }}
-                >
-                    Limpar Filtros
-                </Button>
+        type="default"
+        style={{
+          position: 'absolute',
+          top: '170px',
+          width: '192px',
+          left: '2.5%',
+          borderRadius: '10px',
+          border: '1px solid #4FA1C1',
+          background: 'transparent',
+          color: '#4FA1C1',
+          marginRight: '30px',
+        }}
+        onClick={handleFilterActive}
+      >
+        Ver apenas ativos
+      </Button>
+      <Button
+        type="default"
+        style={{
+          position: 'absolute',
+          top: '170px',
+          width: '192px',
+          left: '25%',
+          borderRadius: '10px',
+          border: '1px solid #4FA1C1',
+          background: 'transparent',
+          marginLeft: '30px',
+          color: '#4FA1C1',
+        }}
+        onClick={handleClearFilters}
+      >
+        Limpar Filtros
+      </Button>
 
 
                 
@@ -139,9 +145,17 @@ export default function Cubed() {
           >
             <Card className={styles.nextlevel}>
              <div className={styles['underlevel']}>
-             <Dropdown overlay={menu(item.id)} trigger={['click']}>
-                <Button icon={<MoreOutlined />} />
-              </Dropdown>
+
+             <Dropdown
+  className={styles['underlevelbutton']}
+  overlay={menu(item.id)}
+  trigger={['click']}
+>
+  <Button
+    icon={<EllipsisOutlined style={{ fontSize: '20px' }} />}
+    style={{ fontSize: '16px', padding: '30px 15px' }}
+  />
+</Dropdown>
              </div>
               <p className={styles.nome}>{item.nome}</p>
               <p className={styles.cpf}>{item.cpf}</p>

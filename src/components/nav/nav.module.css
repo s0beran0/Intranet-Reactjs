@@ -46,54 +46,51 @@
 }
 .button-1 {
     background-image: url('/assets/bt1.png');
-    /* Substitua pelo caminho correto da imagem */
     background-size: 19px 22px;
-    /* Define o tamanho da imagem */
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .button-2 {
     background-image: url('/assets/bt2.jpg');
-    /* Substitua pelo caminho correto da imagem */
     background-size: 32px 32px;
-    /* Define o tamanho da imagem */
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .button-3 {
     background-image: url('/assets/bt3.jpg');
-    /* Substitua pelo caminho correto da imagem */
     background-size: 32px 32px;
-    /* Define o tamanho da imagem */
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .button-4 {
     background-image: url('/assets/bt4.png');
-    /* Substitua pelo caminho correto da imagem */
     background-size: 19px 22px;
-    /* Define o tamanho da imagem */
     background-repeat: no-repeat;
     background-position: center center;
+    transition: top 0.3s ease; 
 }
 
 .button-5 {
     background-image: url('/assets/bt5.jpg');
-    /* Substitua pelo caminho correto da imagem */
     background-size: 32px 32px;
-    /* Define o tamanho da imagem */
     background-repeat: no-repeat;
     background-position: center center;
 }
 
 .button-6 {
     background-image: url('/assets/bt6.png');
-    /* Substitua pelo caminho correto da imagem */
     background-size: 19px 22px;
-    /* Define o tamanho da imagem */
     background-repeat: no-repeat;
     background-position: center center;
+}
+
+.indicator {
+    position: absolute;
+    width: 5px; 
+    height: 32px; 
+    background: rgba(255, 255, 255, 0.93);
+    transition: top 0.3s ease; 
 }

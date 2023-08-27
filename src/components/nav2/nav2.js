@@ -7,7 +7,7 @@ import { useSelector, useDispatch  } from 'react-redux';
 export default function Nav2() {
 
 
-    const dispatchApp = useDispatch(); // Usando um nome diferente para evitar conflito
+    const dispatchApp = useDispatch(); 
     const { buttonText } = useSelector(state => state.app);
   
     const handleTextChange = (newText) => {
@@ -16,14 +16,14 @@ export default function Nav2() {
     
     const buttonData = [
         { text: buttonText },
-        { text: 'ITEM 2' },
-        { text: 'ITEM 3' },
-        { text: 'ITEM 4' },
-        { text: 'ITEM 5' },
-        { text: 'ITEM 6' },
-        { text: 'ITEM 7' },
-        { text: 'ITEM 8' },
-        { text: 'ITEM 9' },
+        { text: 'ITEM 1' },
+        { text: 'ITEM 1' },
+        { text: 'ITEM 1' },
+        { text: 'ITEM 1' },
+        { text: 'ITEM 1' },
+        { text: 'ITEM 1' },
+        { text: 'ITEM 1' },
+        { text: 'ITEM 1' },
     ];
 
     return (
