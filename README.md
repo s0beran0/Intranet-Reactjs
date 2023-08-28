@@ -12,10 +12,9 @@ npm run dev
 yarn dev
 # ou
 pnpm dev
-```
 
 Abra [http://localhost:3000](http://localhost:3000).
-
+```
 Para incializar o json-server:
 
 json-server --watch db.json --port 5000
