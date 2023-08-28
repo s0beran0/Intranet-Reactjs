@@ -16,12 +16,13 @@ pnpm dev
 Abra [http://localhost:3000](http://localhost:3000).
 ```
 Para incializar o json-server:
-
+```bash
 json-server --watch db.json --port 5000
 
 Todas as requisisões se encontram no arquivo actions.js como solicitado.
-
+```
   dependencies: 
+  ```bash
     "@next/font": "13.4.19",
     "@reduxjs/toolkit": "^1.9.5",
     "antd": "^5.8.4",
@@ -33,3 +34,4 @@ Todas as requisisões se encontram no arquivo actions.js como solicitado.
     "react-redux": "^8.1.2",
     "redux-persist": "^6.0.0",
     "typeface-roboto": "^1.1.13"
+```
