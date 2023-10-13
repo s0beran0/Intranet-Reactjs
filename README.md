@@ -22,8 +22,6 @@ npm run json-server
 yarn jsdon-server
 #ou
 json-server --watch db.json --port 5000
-
-Todas as requisisões se encontram no arquivo actions.js como solicitado.
 ```
   dependencies: 
   ```bash
